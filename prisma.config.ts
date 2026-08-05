@@ -10,6 +10,13 @@ export default defineConfig({
     seed: "tsx prisma/seed.ts",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    /**
+     * Migrations need a direct connection. Managed Postgres (Neon, Supabase)
+     * hands out a pooled URL for the app, but the pooler runs in transaction
+     * mode and drops the advisory lock and session state that `migrate deploy`
+     * relies on, so it fails there. `DIRECT_URL` carries the unpooled string
+     * when the two differ; locally there is no pooler and it stays unset.
+     */
+    url: process.env["DIRECT_URL"] ?? process.env["DATABASE_URL"],
   },
 });

@@ -8,13 +8,20 @@
 
 1. در [neon.tech](https://neon.tech) با همان حساب گیت‌هاب وارد شو.
 2. یک پروژه بساز؛ ناحیه‌ی نزدیک به مخاطب را انتخاب کن (مثلاً Frankfurt).
-3. از صفحه‌ی **Connection string** رشته‌ی اتصال را بردار. شکلش این است:
+3. از صفحه‌ی **Connection string** هر **دو** شکل رشته را بردار — کلیدی به نام
+   *Connection pooling* آن‌ها را عوض می‌کند:
 
-   ```
-   postgresql://USER:PASSWORD@ep-xxx.eu-central-1.aws.neon.tech/neondb?sslmode=require
-   ```
+   | حالت | نمونه | مصرف |
+   | --- | --- | --- |
+   | با pooling | `...@ep-xxx-pooler.eu-central-1.aws.neon.tech/...` | `DATABASE_URL` |
+   | بدون pooling | `...@ep-xxx.eu-central-1.aws.neon.tech/...` | `DIRECT_URL` |
 
-   حتماً نسخه‌ی **Pooled connection** را بردار و `sslmode=require` را نگه دار.
+   تفاوتشان فقط `-pooler` در نام میزبان است. `sslmode=require` را در هر دو نگه دار.
+
+   دو تا لازم است چون pooler در حالت transaction کار می‌کند و قفل و session
+   state موردنیاز `prisma migrate` را نگه نمی‌دارد. اپلیکیشن از نسخه‌ی pooled
+   استفاده می‌کند و مایگریشن از نسخه‌ی مستقیم — این انتخاب در `prisma.config.ts`
+   انجام می‌شود.
 
 ## ۲. پر کردن دیتابیس
 
@@ -23,12 +30,13 @@
 در PowerShell و در ریشه‌ی پروژه:
 
 ```powershell
-$env:DATABASE_URL = "<رشته اتصال Neon>"
+$env:DIRECT_URL = "<رشته بدون pooling>"
+$env:DATABASE_URL = "<رشته با pooling>"
 npx prisma migrate deploy
 npx prisma db seed
 ```
 
-بعد از تمام شدن، پنجره‌ی ترمینال را ببند تا `DATABASE_URL` به حالت لوکال برگردد.
+بعد از تمام شدن، پنجره‌ی ترمینال را ببند تا متغیرها به حالت لوکال برگردند.
 
 ## ۳. دیپلوی روی Vercel
 
@@ -38,7 +46,8 @@ npx prisma db seed
 
    | نام | مقدار |
    | --- | --- |
-   | `DATABASE_URL` | رشته‌ی اتصال Neon |
+   | `DATABASE_URL` | رشته‌ی Neon **با** pooling |
+   | `DIRECT_URL` | رشته‌ی Neon **بدون** pooling |
    | `AUTH_SECRET` | یک رشته‌ی تصادفی حداقل ۳۲ کاراکتری |
    | `NEXT_PUBLIC_SITE_URL` | `https://esmnadareh.vercel.app` |
 
