@@ -22,6 +22,23 @@ powershell -ExecutionPolicy Bypass -File scripts/demo-tunnel.ps1
 - بیلد باید با `NEXT_PUBLIC_SITE_URL` **خالی** انجام شده باشد تا آدرس مطلق از
   هدرهای `x-forwarded-*` ساخته شود. با مقدار ثابت، باندل به همان آدرس قفل
   می‌شود و تونل بعدی خراب می‌شود.
+- **`npm run dev` نباید همزمان روی همان پورت باشد.** اسکریپت این حالت را
+  تشخیص می‌دهد و متوقف می‌شود.
+
+### صفحه بدون استایل و بدون تعامل باز می‌شود
+
+نشانه‌ی تونل‌شدن سرور توسعه به‌جای بیلد. `next dev` مسیر `/_next/*` را برای هر
+Origin بیرون از `allowedDevOrigins` با ۴۰۳ رد می‌کند و هیچ آدرس تونلی در آن
+فهرست نیست، پس HTML می‌آید ولی CSS و JS نه.
+
+تشخیصش فریبنده است: ابزارهایی مثل `curl` و `Invoke-WebRequest` هدر `Referer`
+نمی‌فرستند و ۲۰۰ می‌گیرند، در حالی که مرورگر ۴۰۳ می‌گیرد. برای بازتولید واقعی:
+
+```powershell
+Invoke-WebRequest "$url/_next/static/chunks/<file>.css" -Headers @{ Referer = "$url/" }
+```
+
+راه‌حل: سرور dev را ببند، `npm run build` بگیر و دوباره اسکریپت را اجرا کن.
 
 ## مسیر ۲ (بایگانی) — Render + Neon
 

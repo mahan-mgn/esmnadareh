@@ -44,6 +44,28 @@ if (-not (Test-Path (Join-Path $root ".next"))) {
 }
 
 $listening = Test-NetConnection -ComputerName "127.0.0.1" -Port $port -WarningAction SilentlyContinue
+
+<#
+  A `next dev` already on this port would be tunnelled instead of the build,
+  and the failure is quiet: dev answers /_next/* with 403 unless the requesting
+  Origin is in `allowedDevOrigins`, which no tunnel address ever is. Tools that
+  omit a Referer still see 200, so the tunnel looks healthy while every real
+  browser gets HTML with no CSS and no JS. Refuse rather than serve that.
+#>
+if ($listening.TcpTestSucceeded) {
+  try {
+    $probe = (Invoke-WebRequest "http://localhost:$port/" -TimeoutSec 15 -UseBasicParsing).Content
+    if ($probe -match "hmr-client|next-devtools") {
+      Write-Host "Port $port is running a dev server, which cannot be tunnelled." -ForegroundColor Red
+      Write-Host "Stop it (Ctrl+C in that window) and run this script again." -ForegroundColor Red
+      exit 1
+    }
+  } catch {
+    Write-Host "Port $port is occupied but not answering — free it and retry." -ForegroundColor Red
+    exit 1
+  }
+}
+
 if (-not $listening.TcpTestSucceeded) {
   Write-Host "Starting the app on port $port…" -ForegroundColor Cyan
   $log = Join-Path $bin "next.log"
