@@ -50,3 +50,6 @@ next-env.d.ts
 
 # admin-uploaded product photography — content, not source
 /public/uploads/
+
+# cloudflared binary and demo logs
+/.cloudflared/
