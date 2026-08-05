@@ -95,8 +95,12 @@ Write-Host "Opening the tunnel…" -ForegroundColor Cyan
 $tunnelLog = Join-Path $bin "tunnel.log"
 if (Test-Path $tunnelLog) { Remove-Item $tunnelLog -Force }
 
+# --protocol http2 keeps the edge connection on TCP. The QUIC default rides on
+# UDP 7844, which a VPN tends to drop or reorder; that shows up as a stream of
+# "datagram handler" and "control stream" errors and a link that dies minutes
+# after it was handed out.
 $tunnel = Start-Process -FilePath $exe `
-  -ArgumentList "tunnel --url http://localhost:$port --no-autoupdate" `
+  -ArgumentList "tunnel --url http://localhost:$port --protocol http2 --no-autoupdate" `
   -RedirectStandardError $tunnelLog `
   -RedirectStandardOutput (Join-Path $bin "tunnel.out") `
   -WindowStyle Hidden -PassThru
