@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyunglazedvase2" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#F3EFE8"/>
+      <stop offset="100%" stop-color="#ebe4da"/>
+    </linearGradient>
+    <radialGradient id="vigunglazedvase2" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainunglazedvase2" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frameunglazedvase2">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameunglazedvase2)">
+    <rect width="1200" height="1500" fill="url(#skyunglazedvase2)"/>
+    <rect x="0" y="940.27" width="1200" height="559.73" fill="#D9CEBD"/>
+    <ellipse cx="726.43" cy="961.27" rx="262.94" ry="33" fill="#F3EFE8" opacity="0.65"/>
+    <rect x="444.71" y="423.19" width="375.63" height="517.08" rx="187.81" fill="#B4A48C"/>
+    <rect x="444.71" y="423.19" width="127.71" height="517.08" fill="#F3EFE8" opacity="0.35"/>
+    <line x1="0" y1="940.27" x2="1200" y2="940.27" stroke="#A8412E" stroke-width="3.6" opacity="0.75"/>
+    <rect width="1200" height="1500" fill="url(#vigunglazedvase2)"/>
+    <rect width="1200" height="1500" filter="url(#grainunglazedvase2)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

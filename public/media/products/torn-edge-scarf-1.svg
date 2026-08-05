@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skytornedgescarf0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#5E2015"/>
+      <stop offset="100%" stop-color="#71281b"/>
+    </linearGradient>
+    <radialGradient id="vigtornedgescarf0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graintornedgescarf0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frametornedgescarf0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frametornedgescarf0)">
+    <rect width="1200" height="1500" fill="url(#skytornedgescarf0)"/>
+    <path d="M -72 147.68 C -13.94 525, -130.06 975, -48.77 1510 L 295.23 1510 C 213.94 975, 330.06 525, 272 147.68 Z" fill="#9A3A29" opacity="0.93"/>
+    <path d="M 128 -17.16 C 169.8 525, 86.2 975, 144.72 1510 L 488.72 1510 C 430.2 975, 513.8 525, 472 -17.16 Z" fill="#C9613C" opacity="0.85"/>
+    <path d="M 328 134.72 C 381.7 525, 274.3 975, 349.48 1510 L 693.48 1510 C 618.3 975, 725.7 525, 672 134.72 Z" fill="#5E2015" opacity="0.92"/>
+    <path d="M 528 120.87 C 569.33 525, 486.67 975, 544.53 1510 L 888.53 1510 C 830.67 975, 913.33 525, 872 120.87 Z" fill="#9A3A29" opacity="0.81"/>
+    <path d="M 728 70.68 C 766.59 525, 689.41 975, 743.44 1510 L 1087.44 1510 C 1033.41 975, 1110.59 525, 1072 70.68 Z" fill="#9A3A29" opacity="0.91"/>
+    <path d="M 928 121.56 C 996.39 525, 859.61 975, 955.36 1510 L 1299.36 1510 C 1203.61 975, 1340.39 525, 1272 121.56 Z" fill="#C9613C" opacity="0.88"/>
+    <path d="M 329.16 -20 C 425.16 600, 233.16 1050, 365.16 1520" fill="none" stroke="#F2EDE6" stroke-width="6.17" opacity="0.85"/>
+    <rect width="1200" height="1500" fill="url(#vigtornedgescarf0)"/>
+    <rect width="1200" height="1500" filter="url(#graintornedgescarf0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#F2EDE6" opacity="0.45">TORN EDGE SCARF</text>
+  </g>
+</svg>

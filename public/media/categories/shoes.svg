@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img">
+  <defs>
+    <linearGradient id="skycategoryshoes" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#C6C3BF"/>
+      <stop offset="100%" stop-color="#b6b3af"/>
+    </linearGradient>
+    <radialGradient id="vigcategoryshoes" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincategoryshoes" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecategoryshoes">
+      <rect x="0" y="0" width="1000" height="1250"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecategoryshoes)">
+    <rect width="1000" height="1250" fill="url(#skycategoryshoes)"/>
+    <rect x="0" y="879.26" width="1000" height="370.74" fill="#95918C"/>
+    <ellipse cx="589.02" cy="896.76" rx="258.03" ry="27.5" fill="#C6C3BF" opacity="0.65"/>
+    <rect x="312.56" y="490.23" width="368.62" height="389.02" rx="14.74" fill="#57534F"/>
+    <rect x="312.56" y="490.23" width="125.33" height="389.02" fill="#C6C3BF" opacity="0.35"/>
+    <line x1="0" y1="879.26" x2="1000" y2="879.26" stroke="#141211" stroke-width="3" opacity="0.75"/>
+    <rect width="1000" height="1250" fill="url(#vigcategoryshoes)"/>
+    <rect width="1000" height="1250" filter="url(#graincategoryshoes)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="45" y="1206.25" font-family="Helvetica, Arial, sans-serif" font-size="26" letter-spacing="8" fill="#141211" opacity="0.45">SHOES</text>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skydocumentcase0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vigdocumentcase0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graindocumentcase0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framedocumentcase0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framedocumentcase0)">
+    <rect width="1200" height="1500" fill="url(#skydocumentcase0)"/>
+    <rect x="0" y="1077.6" width="1200" height="422.4" fill="#221E1D"/>
+    <ellipse cx="722.91" cy="1098.6" rx="282.61" ry="33" fill="#0C0A0A" opacity="0.65"/>
+    <ellipse cx="621.98" cy="829.86" rx="201.87" ry="247.74" fill="#453E3A"/>
+    <rect x="420.11" y="582.12" width="137.27" height="495.47" fill="#0C0A0A" opacity="0.35"/>
+    <line x1="0" y1="1077.6" x2="1200" y2="1077.6" stroke="#A8412E" stroke-width="3.6" opacity="0.75"/>
+    <rect width="1200" height="1500" fill="url(#vigdocumentcase0)"/>
+    <rect width="1200" height="1500" filter="url(#graindocumentcase0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#EDE7DE" opacity="0.45">DOCUMENT CASE</text>
+  </g>
+</svg>

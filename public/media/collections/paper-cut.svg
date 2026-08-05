@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100" role="img">
+  <defs>
+    <linearGradient id="skycollectionpapercut" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#5E2015"/>
+      <stop offset="100%" stop-color="#71281b"/>
+    </linearGradient>
+    <radialGradient id="vigcollectionpapercut" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincollectionpapercut" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecollectionpapercut">
+      <rect x="0" y="0" width="1800" height="1100"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecollectionpapercut)">
+    <rect width="1800" height="1100" fill="url(#skycollectionpapercut)"/>
+    <g transform="rotate(-5.66 1611.63 689.4)"><polygon points="1265.52,600.3 1951.32,601.75 1957.74,777.23 1266.65,779.29" fill="#C9613C" opacity="0.97"/></g>
+    <g transform="rotate(1.31 1496.17 54.61)"><polygon points="1201.72,-23.45 1785.05,-25.67 1793.16,133.45 1202.32,136.62" fill="#9A3A29" opacity="0.91"/></g>
+    <g transform="rotate(4.32 574.12 783.3)"><polygon points="227.41,712.9 908.72,713.47 918.07,850.44 227.48,853.36" fill="#F2EDE6" opacity="0.94"/></g>
+    <g transform="rotate(-3.9 575.31 372.94)"><polygon points="224.36,236.26 926.47,232.27 928.78,509.26 216.77,511.96" fill="#C9613C" opacity="0.94"/></g>
+    <g transform="rotate(-5.28 987.99 729.36)"><polygon points="684.35,611.9 1294.09,614.68 1298.9,846.46 686.25,847.15" fill="#5E2015" opacity="0.94"/></g>
+    <g transform="rotate(3.34 1139.54 933.92)"><polygon points="923.21,794.02 1360.85,789.87 1360,1071.87 919.8,1074.11" fill="#C9613C" opacity="0.91"/></g>
+    <rect width="1800" height="1100" fill="url(#vigcollectionpapercut)"/>
+    <rect width="1800" height="1100" filter="url(#graincollectionpapercut)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="81" y="1061.5" font-family="Helvetica, Arial, sans-serif" font-size="28.6" letter-spacing="8.8" fill="#F2EDE6" opacity="0.45">PAPER CUT</text>
+  </g>
+</svg>

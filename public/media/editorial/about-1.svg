@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000" role="img">
+  <defs>
+    <linearGradient id="skyeditorialabout1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#E5D9C4"/>
+      <stop offset="100%" stop-color="#dacbb2"/>
+    </linearGradient>
+    <radialGradient id="vigeditorialabout1" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graineditorialabout1" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frameeditorialabout1">
+      <rect x="0" y="0" width="1400" height="1000"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameeditorialabout1)">
+    <rect width="1400" height="1000" fill="url(#skyeditorialabout1)"/>
+    <polygon points="-280,-300 1680,-612.05 1680,-383.48 -280,-71.43" fill="#E5D9C4" opacity="0.64"/>
+    <polygon points="-280,-71.43 1680,-383.48 1680,-154.91 -280,157.14" fill="#C2AC8B" opacity="0.85"/>
+    <polygon points="-280,157.14 1680,-154.91 1680,73.66 -280,385.71" fill="#95795A" opacity="0.9"/>
+    <polygon points="-280,385.71 1680,73.66 1680,302.23 -280,614.29" fill="#C2AC8B" opacity="0.66"/>
+    <polygon points="-280,614.29 1680,302.23 1680,530.8 -280,842.86" fill="#E5D9C4" opacity="0.77"/>
+    <polygon points="-280,842.86 1680,530.8 1680,759.37 -280,1071.43" fill="#C2AC8B" opacity="0.8"/>
+    <polygon points="-280,1071.43 1680,759.37 1680,987.95 -280,1300" fill="#95795A" opacity="0.79"/>
+    <polygon points="-280,411.29 1680,99.23 1680,135.8 -280,447.86" fill="#3A2A1C" opacity="0.75"/>
+    <rect width="1400" height="1000" fill="url(#vigeditorialabout1)"/>
+    <rect width="1400" height="1000" filter="url(#graineditorialabout1)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

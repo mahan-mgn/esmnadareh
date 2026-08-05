@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100" role="img">
+  <defs>
+    <linearGradient id="skycollectionrawedit" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#E5D9C4"/>
+      <stop offset="100%" stop-color="#dacbb2"/>
+    </linearGradient>
+    <radialGradient id="vigcollectionrawedit" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincollectionrawedit" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecollectionrawedit">
+      <rect x="0" y="0" width="1800" height="1100"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecollectionrawedit)">
+    <rect width="1800" height="1100" fill="url(#skycollectionrawedit)"/>
+    <rect x="0" y="776.48" width="1800" height="323.52" fill="#C2AC8B"/>
+    <ellipse cx="1052.96" cy="791.88" rx="454.97" ry="24.2" fill="#E5D9C4" opacity="0.65"/>
+    <rect x="565.49" y="381.56" width="649.96" height="394.92" rx="26" fill="#95795A"/>
+    <rect x="565.49" y="381.56" width="220.99" height="394.92" fill="#E5D9C4" opacity="0.35"/>
+    <line x1="0" y1="776.48" x2="1800" y2="776.48" stroke="#3A2A1C" stroke-width="3.3" opacity="0.75"/>
+    <rect width="1800" height="1100" fill="url(#vigcollectionrawedit)"/>
+    <rect width="1800" height="1100" filter="url(#graincollectionrawedit)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="81" y="1061.5" font-family="Helvetica, Arial, sans-serif" font-size="28.6" letter-spacing="8.8" fill="#2C2116" opacity="0.45">RAW EDIT</text>
+  </g>
+</svg>

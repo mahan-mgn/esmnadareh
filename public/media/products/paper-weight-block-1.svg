@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skypaperweightblock0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#E5D9C4"/>
+      <stop offset="100%" stop-color="#dacbb2"/>
+    </linearGradient>
+    <radialGradient id="vigpaperweightblock0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainpaperweightblock0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framepaperweightblock0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framepaperweightblock0)">
+    <rect width="1200" height="1500" fill="url(#skypaperweightblock0)"/>
+    <rect x="0" y="947.82" width="1200" height="552.18" fill="#C2AC8B"/>
+    <ellipse cx="709.78" cy="968.82" rx="308.6" ry="33" fill="#E5D9C4" opacity="0.65"/>
+    <ellipse cx="599.57" cy="706.41" rx="220.43" ry="241.41" fill="#95795A"/>
+    <rect x="379.14" y="465" width="149.89" height="482.81" fill="#E5D9C4" opacity="0.35"/>
+    <line x1="0" y1="947.82" x2="1200" y2="947.82" stroke="#3A2A1C" stroke-width="3.6" opacity="0.75"/>
+    <rect width="1200" height="1500" fill="url(#vigpaperweightblock0)"/>
+    <rect width="1200" height="1500" filter="url(#grainpaperweightblock0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#2C2116" opacity="0.45">PAPER WEIGHT BLOCK</text>
+  </g>
+</svg>

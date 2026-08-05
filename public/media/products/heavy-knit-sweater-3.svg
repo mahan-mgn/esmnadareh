@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyheavyknitsweater2" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#E5D9C4"/>
+      <stop offset="100%" stop-color="#dacbb2"/>
+    </linearGradient>
+    <radialGradient id="vigheavyknitsweater2" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainheavyknitsweater2" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frameheavyknitsweater2">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameheavyknitsweater2)">
+    <rect width="1200" height="1500" fill="url(#skyheavyknitsweater2)"/>
+    <rect x="0" y="1022.06" width="1200" height="477.94" fill="#C2AC8B"/>
+    <ellipse cx="675.26" cy="1043.06" rx="269.93" ry="33" fill="#E5D9C4" opacity="0.65"/>
+    <ellipse cx="578.86" cy="819.69" rx="192.81" ry="202.38" fill="#95795A"/>
+    <rect x="386.05" y="617.31" width="131.11" height="404.75" fill="#E5D9C4" opacity="0.35"/>
+    <line x1="0" y1="1022.06" x2="1200" y2="1022.06" stroke="#3A2A1C" stroke-width="3.6" opacity="0.75"/>
+    <rect width="1200" height="1500" fill="url(#vigheavyknitsweater2)"/>
+    <rect width="1200" height="1500" filter="url(#grainheavyknitsweater2)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

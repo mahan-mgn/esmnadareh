@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skytornedgescarf2" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#E5D9C4"/>
+      <stop offset="100%" stop-color="#dacbb2"/>
+    </linearGradient>
+    <radialGradient id="vigtornedgescarf2" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graintornedgescarf2" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frametornedgescarf2">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frametornedgescarf2)">
+    <rect width="1200" height="1500" fill="url(#skytornedgescarf2)"/>
+    <g transform="rotate(-0.48 288.2 292)"><polygon points="127.29,150.05 441.19,149.73 447.25,429.75 128.59,433.6" fill="#95795A" opacity="0.97"/></g>
+    <g transform="rotate(-1.4 462.28 681.36)"><polygon points="231.46,551.18 688.3,551.15 698.92,808.92 233.46,809.82" fill="#C2AC8B" opacity="0.96"/></g>
+    <g transform="rotate(-5.27 959.51 246.73)"><polygon points="748.48,156.87 1167.19,153.09 1177.98,339.9 747.42,340.2" fill="#3A2A1C" opacity="0.92"/></g>
+    <g transform="rotate(-4.49 728.12 771.14)"><polygon points="493.39,582.62 967.72,578.82 972.94,958.89 486.89,961.64" fill="#95795A" opacity="1"/></g>
+    <g transform="rotate(-4.35 603.38 1296.29)"><polygon points="373.99,1086.04 834.83,1081.77 839.04,1508.77 367.33,1516.59" fill="#E5D9C4" opacity="0.97"/></g>
+    <g transform="rotate(-2.1 832.67 223.46)"><polygon points="700.16,49.14 969.5,47.24 970.23,401.4 699.22,398.92" fill="#95795A" opacity="0.93"/></g>
+    <rect width="1200" height="1500" fill="url(#vigtornedgescarf2)"/>
+    <rect width="1200" height="1500" filter="url(#graintornedgescarf2)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skynightpouch0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vignightpouch0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainnightpouch0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framenightpouch0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framenightpouch0)">
+    <rect width="1200" height="1500" fill="url(#skynightpouch0)"/>
+    <rect x="0" y="1090.99" width="1200" height="409.01" fill="#221E1D"/>
+    <circle cx="670.44" cy="827.54" r="524.08" fill="#453E3A"/>
+    <path d="M 670.44 303.46 A 524.08 524.08 0 0 1 670.44 1351.63 Z" fill="#0C0A0A" opacity="0.42"/>
+    <circle cx="670.44" cy="827.54" r="524.08" fill="none" stroke="#A8412E" stroke-width="4.8" opacity="0.8"/>
+    <line x1="0" y1="1090.99" x2="1200" y2="1090.99" stroke="#A8412E" stroke-width="3.6" opacity="0.7"/>
+    <rect width="1200" height="1500" fill="url(#vignightpouch0)"/>
+    <rect width="1200" height="1500" filter="url(#grainnightpouch0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#EDE7DE" opacity="0.45">NIGHT POUCH</text>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250" role="img">
+  <defs>
+    <linearGradient id="skycategoryfragrance" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#240E0D"/>
+      <stop offset="100%" stop-color="#331412"/>
+    </linearGradient>
+    <radialGradient id="vigcategoryfragrance" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincategoryfragrance" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecategoryfragrance">
+      <rect x="0" y="0" width="1000" height="1250"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecategoryfragrance)">
+    <rect width="1000" height="1250" fill="url(#skycategoryfragrance)"/>
+    <rect x="0" y="851.17" width="1000" height="398.83" fill="#54221E"/>
+    <circle cx="436.68" cy="556.35" r="456.86" fill="#8C3A2F"/>
+    <path d="M 436.68 99.49 A 456.86 456.86 0 0 1 436.68 1013.21 Z" fill="#240E0D" opacity="0.42"/>
+    <circle cx="436.68" cy="556.35" r="456.86" fill="none" stroke="#D68F7C" stroke-width="4" opacity="0.8"/>
+    <line x1="0" y1="851.17" x2="1000" y2="851.17" stroke="#D68F7C" stroke-width="3" opacity="0.7"/>
+    <rect width="1000" height="1250" fill="url(#vigcategoryfragrance)"/>
+    <rect width="1000" height="1250" filter="url(#graincategoryfragrance)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="45" y="1206.25" font-family="Helvetica, Arial, sans-serif" font-size="26" letter-spacing="8" fill="#F2EDE6" opacity="0.45">FRAGRANCE</text>
+  </g>
+</svg>

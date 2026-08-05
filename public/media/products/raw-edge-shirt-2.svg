@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyrawedgeshirt1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#E5D9C4"/>
+      <stop offset="100%" stop-color="#dacbb2"/>
+    </linearGradient>
+    <radialGradient id="vigrawedgeshirt1" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainrawedgeshirt1" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framerawedgeshirt1">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framerawedgeshirt1)">
+    <rect width="1200" height="1500" fill="url(#skyrawedgeshirt1)"/>
+    <g transform="rotate(-7.13 509.18 1193.67)"><polygon points="333.32,1015.33 686.97,1007.63 690.84,1377.24 335.14,1378.47" fill="#95795A" opacity="0.99"/></g>
+    <g transform="rotate(-3.98 506.63 1087.14)"><polygon points="340.28,894.32 670.42,889.8 678.35,1286.66 337.32,1282.06" fill="#C2AC8B" opacity="0.99"/></g>
+    <g transform="rotate(-6.02 1072.14 1305.68)"><polygon points="814.51,1190.23 1325.84,1186.32 1334.76,1420.14 815.58,1426.29" fill="#3A2A1C" opacity="0.94"/></g>
+    <g transform="rotate(0.02 966.99 1191.99)"><polygon points="831.05,1030.98 1099.41,1027.84 1104.72,1357.05 832.7,1357.52" fill="#95795A" opacity="0.98"/></g>
+    <rect width="1200" height="1500" fill="url(#vigrawedgeshirt1)"/>
+    <rect width="1200" height="1500" filter="url(#grainrawedgeshirt1)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyrawedgeshirt0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#F3EFE8"/>
+      <stop offset="100%" stop-color="#ebe4da"/>
+    </linearGradient>
+    <radialGradient id="vigrawedgeshirt0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainrawedgeshirt0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framerawedgeshirt0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framerawedgeshirt0)">
+    <rect width="1200" height="1500" fill="url(#skyrawedgeshirt0)"/>
+    <path d="M -72 -40.56 C -33.74 525, -110.26 975, -56.69 1510 L 387.31 1510 C 333.74 975, 410.26 525, 372 -40.56 Z" fill="#D9CEBD" opacity="0.81"/>
+    <path d="M 228 -33 C 252.12 525, 203.88 975, 237.65 1510 L 681.65 1510 C 647.88 975, 696.12 525, 672 -33 Z" fill="#B4A48C" opacity="0.98"/>
+    <path d="M 528 141.89 C 592.72 525, 463.28 975, 553.89 1510 L 997.89 1510 C 907.28 975, 1036.72 525, 972 141.89 Z" fill="#F3EFE8" opacity="0.85"/>
+    <path d="M 828 72.44 C 857.37 525, 798.63 975, 839.75 1510 L 1283.75 1510 C 1242.63 975, 1301.37 525, 1272 72.44 Z" fill="#D9CEBD" opacity="1"/>
+    <path d="M 708.67 -20 C 804.67 600, 612.67 1050, 744.67 1520" fill="none" stroke="#A8412E" stroke-width="7.76" opacity="0.85"/>
+    <rect width="1200" height="1500" fill="url(#vigrawedgeshirt0)"/>
+    <rect width="1200" height="1500" filter="url(#grainrawedgeshirt0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#141211" opacity="0.45">RAW EDGE SHIRT</text>
+  </g>
+</svg>

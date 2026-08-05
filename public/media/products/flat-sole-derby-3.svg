@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyflatsolederby2" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vigflatsolederby2" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainflatsolederby2" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frameflatsolederby2">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameflatsolederby2)">
+    <rect width="1200" height="1500" fill="url(#skyflatsolederby2)"/>
+    <g transform="rotate(6.09 523.61 588.8)"><polygon points="356.29,430.18 698.54,430.92 700.68,744.65 353.12,744.91" fill="#453E3A" opacity="0.89"/></g>
+    <g transform="rotate(5.25 230.29 1173.64)"><polygon points="12.39,1065.67 443.42,1065.43 452.74,1280.96 7.03,1282.2" fill="#221E1D" opacity="0.97"/></g>
+    <g transform="rotate(7.67 613.84 915.89)"><polygon points="476.14,721.16 751.72,719.79 756.54,1108.14 472.88,1115.62" fill="#A8412E" opacity="0.95"/></g>
+    <g transform="rotate(-4.07 572.89 1154.24)"><polygon points="314.65,969.26 837.04,973.13 842.63,1333.43 308.63,1336.1" fill="#453E3A" opacity="0.98"/></g>
+    <rect width="1200" height="1500" fill="url(#vigflatsolederby2)"/>
+    <rect width="1200" height="1500" filter="url(#grainflatsolederby2)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

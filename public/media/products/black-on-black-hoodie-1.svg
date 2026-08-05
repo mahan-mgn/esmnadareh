@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyblackonblackhoodie0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vigblackonblackhoodie0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainblackonblackhoodie0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frameblackonblackhoodie0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameblackonblackhoodie0)">
+    <rect width="1200" height="1500" fill="url(#skyblackonblackhoodie0)"/>
+    <path d="M -72 148.82 C -47.76 525, -96.24 975, -62.31 1510 L 281.69 1510 C 247.76 975, 296.24 525, 272 148.82 Z" fill="#221E1D" opacity="0.94"/>
+    <path d="M 128 72.94 C 181.23 525, 74.77 975, 149.29 1510 L 493.29 1510 C 418.77 975, 525.23 525, 472 72.94 Z" fill="#453E3A" opacity="0.85"/>
+    <path d="M 328 67.23 C 385.03 525, 270.97 975, 350.81 1510 L 694.81 1510 C 614.97 975, 729.03 525, 672 67.23 Z" fill="#0C0A0A" opacity="0.99"/>
+    <path d="M 528 142.8 C 581.44 525, 474.56 975, 549.38 1510 L 893.38 1510 C 818.56 975, 925.44 525, 872 142.8 Z" fill="#221E1D" opacity="0.91"/>
+    <path d="M 728 93.36 C 772.33 525, 683.67 975, 745.73 1510 L 1089.73 1510 C 1027.67 975, 1116.33 525, 1072 93.36 Z" fill="#221E1D" opacity="0.92"/>
+    <path d="M 928 109.93 C 974.29 525, 881.71 975, 946.52 1510 L 1290.52 1510 C 1225.71 975, 1318.29 525, 1272 109.93 Z" fill="#453E3A" opacity="0.96"/>
+    <path d="M 465.61 -20 C 561.61 600, 369.61 1050, 501.61 1520" fill="none" stroke="#A8412E" stroke-width="8.01" opacity="0.85"/>
+    <rect width="1200" height="1500" fill="url(#vigblackonblackhoodie0)"/>
+    <rect width="1200" height="1500" filter="url(#grainblackonblackhoodie0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#EDE7DE" opacity="0.45">BLACK ON BLACK HOODIE</text>
+  </g>
+</svg>

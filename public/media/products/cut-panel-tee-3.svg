@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skycutpaneltee2" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#F3EFE8"/>
+      <stop offset="100%" stop-color="#ebe4da"/>
+    </linearGradient>
+    <radialGradient id="vigcutpaneltee2" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincutpaneltee2" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecutpaneltee2">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecutpaneltee2)">
+    <rect width="1200" height="1500" fill="url(#skycutpaneltee2)"/>
+    <rect x="0" y="1200" width="1200" height="300" fill="#D9CEBD"/>
+    <ellipse cx="654.34" cy="1306.3" rx="317.16" ry="33" fill="#F3EFE8" opacity="0.6"/>
+    <rect x="390.04" y="313.7" width="440.5" height="992.6" rx="220.25" fill="#B4A48C"/>
+    <rect x="390.04" y="313.7" width="185.01" height="992.6" rx="132.15" fill="#F3EFE8" opacity="0.5"/>
+    <line x1="144" y1="268.7" x2="1056" y2="268.7" stroke="#A8412E" stroke-width="4.8" opacity="0.8"/>
+    <rect x="619.1" y="472.51" width="22.02" height="615.41" fill="#A8412E" opacity="0.55"/>
+    <rect width="1200" height="1500" fill="url(#vigcutpaneltee2)"/>
+    <rect width="1200" height="1500" filter="url(#graincutpaneltee2)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

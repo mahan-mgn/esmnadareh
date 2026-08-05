@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skytornedgescarf1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#5E2015"/>
+      <stop offset="100%" stop-color="#71281b"/>
+    </linearGradient>
+    <radialGradient id="vigtornedgescarf1" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graintornedgescarf1" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frametornedgescarf1">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frametornedgescarf1)">
+    <rect width="1200" height="1500" fill="url(#skytornedgescarf1)"/>
+    <polygon points="-240,-450 1440,-604.16 1440,-124.16 -240,30" fill="#5E2015" opacity="0.75"/>
+    <polygon points="-240,30 1440,-124.16 1440,355.84 -240,510" fill="#9A3A29" opacity="0.61"/>
+    <polygon points="-240,510 1440,355.84 1440,835.84 -240,990" fill="#C9613C" opacity="0.74"/>
+    <polygon points="-240,990 1440,835.84 1440,1315.84 -240,1470" fill="#9A3A29" opacity="0.72"/>
+    <polygon points="-240,1470 1440,1315.84 1440,1795.84 -240,1950" fill="#5E2015" opacity="0.82"/>
+    <polygon points="-240,996.46 1440,842.3 1440,919.1 -240,1073.26" fill="#F2EDE6" opacity="0.75"/>
+    <rect width="1200" height="1500" fill="url(#vigtornedgescarf1)"/>
+    <rect width="1200" height="1500" filter="url(#graintornedgescarf1)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

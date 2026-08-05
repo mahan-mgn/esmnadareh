@@ -1,0 +1,443 @@
+// Esm Nadareh — collection store data model
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------------------------------------------------------------- enums
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum DiscountType {
+  /// `value` is a percentage of the subtotal, optionally capped by maxDiscount
+  PERCENT
+  /// `value` is a flat amount in toman
+  FIXED
+}
+
+// ---------------------------------------------------------------- catalog
+
+/// Product taxonomy: پوشاک، کیف، کفش، اکسسوری، عطر، جواهرات، دکور
+model Category {
+  id       String  @id @default(cuid())
+  slug     String  @unique
+  nameFa   String
+  nameEn   String
+  descFa   String?
+  descEn   String?
+  image    String?
+  position Int     @default(0)
+  featured Boolean @default(false)
+
+  parentId String?
+  parent   Category?  @relation("CategoryTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children Category[] @relation("CategoryTree")
+
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([parentId])
+}
+
+/// A curated drop — the heart of the brand
+model Collection {
+  id         String    @id @default(cuid())
+  slug       String    @unique
+  nameFa     String
+  nameEn     String
+  taglineFa  String?
+  taglineEn  String?
+  storyFa    String?
+  storyEn    String?
+  coverImage String?
+  season     String?
+  year       Int?
+  position   Int       @default(0)
+  featured   Boolean   @default(false)
+  published  Boolean   @default(true)
+  releasedAt DateTime?
+
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id     String @id @default(cuid())
+  slug   String @unique
+  sku    String @unique
+  nameFa String
+  nameEn String
+  descFa String
+  descEn String
+  /// Short editorial line shown under the title
+  subtitleFa String?
+  subtitleEn String?
+
+  /// Prices are stored in toman (integer). Other currencies are derived at render time.
+  price          Int
+  compareAtPrice Int?
+
+  categoryId   String
+  category     Category    @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  collectionId String?
+  collection   Collection? @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+
+  published Boolean @default(true)
+  featured  Boolean @default(false)
+  isNew     Boolean @default(false)
+  position  Int     @default(0)
+
+  /// Spec rows: [{ "labelFa": "جنس", "labelEn": "Material", "valueFa": "…", "valueEn": "…" }]
+  specs Json @default("[]")
+
+  images     ProductImage[]
+  variants   ProductVariant[]
+  wishlists  WishlistItem[]
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+  reviews    Review[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+  @@index([collectionId])
+  @@index([published, featured])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  altFa     String?
+  altEn     String?
+  position  Int     @default(0)
+  /// Optional: only show this image when the given colour is selected
+  colorCode String?
+
+  @@index([productId])
+}
+
+/// One purchasable size × colour combination
+model ProductVariant {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  size    String?
+  colorFa String?
+  colorEn String?
+  /// Hex swatch, e.g. #A8412E
+  colorCode String?
+
+  sku String @unique
+  /// Sellable units. A pending order holds its units here too — placing an
+  /// order decrements this immediately and writes a StockReservation, so
+  /// "in stock" always means "can be bought right now".
+  stock      Int @default(0)
+  priceDelta Int @default(0)
+
+  cartItems    CartItem[]
+  orderItems   OrderItem[]
+  reservations StockReservation[]
+
+  @@unique([productId, size, colorCode])
+  @@index([productId])
+}
+
+// ---------------------------------------------------------------- people
+
+model User {
+  id           String  @id @default(cuid())
+  email        String  @unique
+  passwordHash String
+  name         String?
+  phone        String?
+  role         Role    @default(CUSTOMER)
+
+  addresses Address[]
+  orders    Order[]
+  wishlist  WishlistItem[]
+  cart      Cart?
+  reviews   Review[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Address {
+  id         String  @id @default(cuid())
+  userId     String
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName   String
+  phone      String
+  province   String
+  city       String
+  line1      String
+  postalCode String
+  isDefault  Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+// ---------------------------------------------------------------- commerce
+
+model Cart {
+  id     String  @id @default(cuid())
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// Anonymous carts are keyed by a cookie token
+  token String @unique
+
+  /// A code the buyer has entered. Re-checked on every render and again at
+  /// checkout — a basket can sit here for weeks, and the code may expire.
+  couponId String?
+  coupon   Coupon? @relation(fields: [couponId], references: [id], onDelete: SetNull)
+
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id        String         @id @default(cuid())
+  cartId    String
+  cart      Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  /// Required: every product carries at least a default variant, which keeps
+  /// the uniqueness below enforceable (Postgres treats NULLs as distinct).
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  quantity  Int            @default(1)
+
+  createdAt DateTime @default(now())
+
+  @@unique([cartId, variantId])
+  @@index([cartId])
+}
+
+model WishlistItem {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([userId])
+}
+
+model Order {
+  id String @id @default(cuid())
+  /// Human-readable, e.g. EN-24051
+  number String  @unique
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  email String
+  phone String
+  /// Language the order was placed in — receipts and status mails are written
+  /// in the language the buyer was reading when they bought.
+  locale String @default("fa")
+
+  status        OrderStatus   @default(PENDING)
+  paymentStatus PaymentStatus @default(UNPAID)
+  /// The reference the payment service gives back on a successful settlement —
+  /// what the buyer quotes to their bank, and what a refund is filed against.
+  paymentRef String?
+  /// Which gateway handled this order: "zarinpal", "simulated"…
+  paymentProvider String?
+  /// The gateway's handle for the in-flight payment (ZarinPal calls it an
+  /// Authority). Verification is done against this, never against the amount
+  /// the callback claims.
+  paymentAuthority String?
+  /// Set once the order's units have gone back on the shelf (failed payment,
+  /// lapsed hold, cancellation, refund). Keeps restocking idempotent.
+  stockReturnedAt DateTime?
+
+  subtotal Int
+  shipping Int @default(0)
+  discount Int @default(0)
+  total    Int
+
+  couponId String?
+  coupon   Coupon? @relation(fields: [couponId], references: [id], onDelete: SetNull)
+  /// The code as it stood when the order was placed — it may be renamed or
+  /// deleted later, and a receipt must still say what was used.
+  couponCode String?
+
+  // Address snapshot — orders must survive address edits
+  shipFullName   String
+  shipProvince   String
+  shipCity       String
+  shipLine1      String
+  shipPostalCode String
+  note           String?
+
+  items        OrderItem[]
+  reservations StockReservation[]
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+/// Units held for an unpaid order. The stock is already taken out of
+/// `ProductVariant.stock`; this row remembers how much to give back if the
+/// buyer never pays. Deleted (consumed) on payment, released on failure or
+/// expiry.
+model StockReservation {
+  id        String         @id @default(cuid())
+  orderId   String
+  order     Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  quantity  Int
+  expiresAt DateTime
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([expiresAt])
+  @@index([variantId])
+}
+
+model OrderItem {
+  id        String          @id @default(cuid())
+  orderId   String
+  order     Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product?        @relation(fields: [productId], references: [id], onDelete: SetNull)
+  variantId String?
+  variant   ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+
+  // Snapshot at purchase time
+  nameFa    String
+  nameEn    String
+  image     String?
+  size      String?
+  colorFa   String?
+  colorEn   String?
+  unitPrice Int
+  quantity  Int
+
+  @@index([orderId])
+}
+
+// ---------------------------------------------------------------- misc
+
+/// What a buyer thought of a product.
+///
+/// Reviews are held back until an admin approves them: a shop this small
+/// cannot absorb spam appearing under its own products, and the rating average
+/// counts approved reviews only.
+model Review {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// 1–5.
+  rating Int
+  title  String?
+  body   String
+
+  /// True when this buyer has actually paid for the product — worked out once,
+  /// at submission, so a later refund does not rewrite history.
+  verified Boolean @default(false)
+  approved Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  /// One review per buyer per product; a second submission edits the first.
+  @@unique([productId, userId])
+  @@index([productId, approved])
+  @@index([approved])
+}
+
+/// A discount code.
+///
+/// There is deliberately no redemption counter: how many times a code has been
+/// used is derived from the orders that carry it, so an abandoned checkout
+/// cannot quietly consume one of a limited run.
+model Coupon {
+  id   String       @id @default(cuid())
+  /// Always stored upper-case; buyers type it however they like.
+  code String       @unique
+  type DiscountType @default(PERCENT)
+  /// Percentage (1–100) or a flat amount in toman, depending on `type`.
+  value Int
+
+  /// Order subtotal the code needs before it applies, in toman.
+  minSubtotal Int  @default(0)
+  /// Ceiling for percentage codes, in toman. Null means uncapped.
+  maxDiscount Int?
+
+  startsAt DateTime?
+  endsAt   DateTime?
+  /// Total redemptions allowed across all buyers. Null means unlimited.
+  usageLimit Int?
+  /// Redemptions allowed per signed-in buyer. Null means unlimited.
+  perUserLimit Int?
+  active       Boolean @default(true)
+
+  carts  Cart[]
+  orders Order[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  locale    String   @default("fa")
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  body      String
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

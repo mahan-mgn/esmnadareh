@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skycutpaneltee0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#F3EFE8"/>
+      <stop offset="100%" stop-color="#ebe4da"/>
+    </linearGradient>
+    <radialGradient id="vigcutpaneltee0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincutpaneltee0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecutpaneltee0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecutpaneltee0)">
+    <rect width="1200" height="1500" fill="url(#skycutpaneltee0)"/>
+    <g transform="rotate(-1.69 1136.13 1456)"><polygon points="978.38,1286.89 1291.21,1281.94 1294.01,1625.46 980.9,1630.98" fill="#B4A48C" opacity="0.97"/></g>
+    <g transform="rotate(-3.27 252.37 182.82)"><polygon points="-13.69,86.34 515.28,85.07 521.24,278.15 -8.66,280.03" fill="#D9CEBD" opacity="0.88"/></g>
+    <g transform="rotate(8.56 121.79 321.64)"><polygon points="-20.52,183.96 264.25,184.08 266.64,459.45 -19.72,458.8" fill="#A8412E" opacity="0.89"/></g>
+    <g transform="rotate(-6.3 955.56 616.16)"><polygon points="773.83,500.88 1130.87,500.92 1138.99,729.53 776.6,731.44" fill="#B4A48C" opacity="0.99"/></g>
+    <g transform="rotate(-0.04 1070.44 350.21)"><polygon points="889.39,247.05 1253.37,244.86 1255.84,455.44 890.92,454.73" fill="#F3EFE8" opacity="0.93"/></g>
+    <rect width="1200" height="1500" fill="url(#vigcutpaneltee0)"/>
+    <rect width="1200" height="1500" filter="url(#graincutpaneltee0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#141211" opacity="0.45">CUT PANEL TEE</text>
+  </g>
+</svg>

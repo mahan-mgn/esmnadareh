@@ -1,0 +1,490 @@
+@import "tailwindcss";
+
+/*
+  ESM NADAREH — design tokens
+  ---------------------------------------------------------------
+  The palette is lifted straight from the brand mark: paper-white
+  cut-outs and brick-red letterpress on deep ink black. Rust is the
+  only accent; it is rationed to buttons, prices and rules.
+*/
+
+/* Matches an explicit `.dark` choice *and* the OS preference when the visitor
+   has not chosen one — mirroring how the tokens below resolve. */
+@custom-variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(html:not(.light):not(.dark) *) {
+      @slot;
+    }
+  }
+}
+
+@theme {
+  /* — brand ------------------------------------------------- */
+  --color-ink: #0b0a0a;
+  --color-ink-soft: #141211;
+  --color-paper: #f4f1ed;
+  --color-paper-soft: #eae5df;
+
+  --color-rust-50: #fbf1ee;
+  --color-rust-100: #f3ddd6;
+  --color-rust-200: #e6b8ab;
+  --color-rust-300: #d68f7c;
+  --color-rust-400: #c1543c;
+  --color-rust-500: #a8412e;
+  --color-rust-600: #8c3324;
+  --color-rust-700: #6e271b;
+  --color-rust-800: #4d1b13;
+  --color-rust-900: #2c100b;
+
+  /* — semantic (re-bound per theme below) -------------------- */
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-content: var(--content);
+  --color-content-muted: var(--content-muted);
+  --color-content-faint: var(--content-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+
+  /* — type -------------------------------------------------- */
+  --font-sans: var(--font-latin), var(--font-farsi), ui-sans-serif, system-ui,
+    sans-serif;
+  --font-fa: var(--font-farsi), var(--font-latin), ui-sans-serif, sans-serif;
+
+  --text-display: clamp(2.75rem, 1rem + 7vw, 8rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.035em;
+
+  --text-hero: clamp(2rem, 0.9rem + 4.4vw, 4.5rem);
+  --text-hero--line-height: 1;
+  --text-hero--letter-spacing: -0.03em;
+
+  --text-title: clamp(1.5rem, 1rem + 1.8vw, 2.5rem);
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.02em;
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.22em;
+
+  /* — motion ------------------------------------------------ */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* — layout ------------------------------------------------ */
+  /* Phones give up 0.75rem of chrome; `md` restores the full bar. The
+     override lives outside `@theme` so it can sit behind a media query. */
+  --spacing-header: 3.75rem;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --spacing-header: 4.5rem;
+  }
+}
+
+/*
+  A phone held sideways is ~360px tall but ~740px wide, and the display/hero
+  clamps are keyed to `vw` alone — they would ask for 68px type in a viewport
+  that cannot spare it. Re-clamp against the short axis.
+*/
+@media (orientation: landscape) and (height <= 34rem) {
+  :root {
+    --text-display: clamp(1.85rem, 0.9rem + 3.2vw, 3.25rem);
+    --text-hero: clamp(1.6rem, 0.85rem + 2.2vw, 2.5rem);
+    --text-title: clamp(1.25rem, 0.9rem + 1.2vw, 1.75rem);
+  }
+}
+
+/* ---------------------------------------------------------------- themes */
+
+/*
+  Themes resolve in three layers, so the first paint is always correct without
+  a blocking inline script:
+
+    1. `:root`          — light is the base.
+    2. media query      — follows the OS *only while the visitor has not
+                          chosen*, i.e. no explicit class on <html>.
+    3. `.light`/`.dark` — an explicit choice, mirrored into a cookie so the
+                          server renders the same class it hydrates with.
+*/
+
+:root {
+  --surface: #f4f1ed;
+  --surface-2: #eae5df;
+  --surface-3: #ffffff;
+  --content: #0b0a0a;
+  --content-muted: #6a635d;
+  --content-faint: #a09890;
+  --line: #dcd5cc;
+  --line-strong: #0b0a0a;
+  --accent: #a8412e;
+  --accent-hover: #8c3324;
+  --on-accent: #f4f1ed;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light):not(.dark) {
+    --surface: #0b0a0a;
+    --surface-2: #141211;
+    --surface-3: #1c1918;
+    --content: #f4f1ed;
+    --content-muted: #948d86;
+    --content-faint: #5f5a55;
+    --line: #262220;
+    --line-strong: #f4f1ed;
+    --accent: #c1543c;
+    --accent-hover: #d68f7c;
+    --on-accent: #0b0a0a;
+
+    color-scheme: dark;
+  }
+}
+
+html.light {
+  --surface: #f4f1ed;
+  --surface-2: #eae5df;
+  --surface-3: #ffffff;
+  --content: #0b0a0a;
+  --content-muted: #6a635d;
+  --content-faint: #a09890;
+  --line: #dcd5cc;
+  --line-strong: #0b0a0a;
+  --accent: #a8412e;
+  --accent-hover: #8c3324;
+  --on-accent: #f4f1ed;
+
+  color-scheme: light;
+}
+
+html.dark {
+  --surface: #0b0a0a;
+  --surface-2: #141211;
+  --surface-3: #1c1918;
+  --content: #f4f1ed;
+  --content-muted: #948d86;
+  --content-faint: #5f5a55;
+  --line: #262220;
+  --line-strong: #f4f1ed;
+  --accent: #c1543c;
+  --accent-hover: #d68f7c;
+  --on-accent: #0b0a0a;
+
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------- base */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+
+    /* iOS inflates text in landscape unless told not to. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+
+    /* In-page anchors must clear the sticky header. */
+    scroll-padding-top: calc(var(--spacing-header) + 1rem);
+
+    /*
+      Reserve the scrollbar track permanently. Without it the centred header
+      mark and every container jump sideways by 10px whenever a page is short
+      enough not to scroll, and again whenever a drawer locks the body. Mobile
+      draws overlay scrollbars, so the gutter is 0 there.
+    */
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--content);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    /*
+      A single overflowing child must not hand the whole document a sideways
+      scrollbar on a 320px screen. `clip` rather than `hidden`: it rules out
+      scrolling without turning <body> into a scroll container, which would
+      break the sticky header.
+    */
+    overflow-x: clip;
+
+    /* Farsi compounds, emails and SKUs are long; break them before they
+       widen the page. Only applies when there is no better break point. */
+    overflow-wrap: break-word;
+  }
+
+  html[lang="fa"] body {
+    font-family: var(--font-fa);
+    font-feature-settings: normal;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  /* A hairline, not a scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border: 3px solid var(--surface);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--content-faint);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* Farsi digits look wrong in tabular price rows; keep latin numerals
+     but let the browser shape them with the Farsi face. */
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+/* ---------------------------------------------------------------- utilities */
+
+/*
+  The insets are folded in symmetrically rather than per-side: `safe-area-inset-
+  left/right` are *physical*, `padding-inline` is logical, and the site runs both
+  RTL and LTR. Taking the max of both for both sides is direction-agnostic and
+  costs nothing on devices that report 0.
+*/
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 90rem;
+  padding-inline: max(
+    1.25rem,
+    env(safe-area-inset-left),
+    env(safe-area-inset-right)
+  );
+
+  @media (width >= 48rem) {
+    padding-inline: max(
+      2.5rem,
+      env(safe-area-inset-left),
+      env(safe-area-inset-right)
+    );
+  }
+  @media (width >= 80rem) {
+    padding-inline: max(
+      3.5rem,
+      env(safe-area-inset-left),
+      env(safe-area-inset-right)
+    );
+  }
+}
+
+/* Matches `container-x`'s inline padding — for elements that sit outside the
+   container but must line up with it (drawers, overlays). */
+@utility pad-x-safe {
+  padding-inline: max(
+    1.5rem,
+    env(safe-area-inset-left),
+    env(safe-area-inset-right)
+  );
+}
+
+/* Clears the home indicator / gesture bar on phones with `viewport-fit=cover`. */
+@utility pb-safe {
+  padding-bottom: max(var(--pb-safe, 0px), env(safe-area-inset-bottom));
+}
+
+/*
+  Horizontal scrollers (thumbnail strips, admin nav, wide tables) read as
+  clutter once a visible bar is drawn under them on desktop, and mobile draws
+  nothing anyway. The content still scrolls — only the bar is suppressed.
+*/
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/*
+  Guarantees a finger-sized hit area without inflating the drawn control, and
+  without touching pointer-precise devices where 28px is perfectly clickable.
+*/
+@utility touch-target {
+  @media (pointer: coarse) {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+  }
+}
+
+/* Lets a scroller run to the screen edge while its content keeps the
+   container's padding — so the last item is never half-clipped. */
+@utility scroll-bleed {
+  --bleed: max(
+    1.25rem,
+    env(safe-area-inset-left),
+    env(safe-area-inset-right)
+  );
+
+  margin-inline: calc(-1 * var(--bleed));
+  padding-inline: var(--bleed);
+  scroll-padding-inline: var(--bleed);
+
+  @media (width >= 48rem) {
+    margin-inline: 0;
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+  }
+}
+
+@utility eyebrow {
+  font-size: var(--text-eyebrow);
+  line-height: 1.2;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* The paper-cut treatment borrowed from the logo. Used sparingly. */
+@utility cut {
+  display: inline-block;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  padding: 0.1em 0.3em;
+  clip-path: polygon(
+    1% 6%,
+    99% 0%,
+    100% 92%,
+    97% 100%,
+    3% 97%,
+    0% 88%
+  );
+}
+
+@utility cut-paper {
+  display: inline-block;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  padding: 0.1em 0.3em;
+  clip-path: polygon(0% 4%, 98% 0%, 100% 90%, 96% 100%, 2% 96%, 1% 10%);
+}
+
+/* ---------------------------------------------------------------- motion */
+
+@keyframes en-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes en-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes en-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes en-reveal {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-fade-up {
+  animation: en-fade-up 0.8s var(--ease-out-soft) both;
+}
+.animate-fade {
+  animation: en-fade 0.6s var(--ease-out-soft) both;
+}
+.animate-reveal {
+  animation: en-reveal 0.9s var(--ease-out-soft) both;
+}
+.animate-marquee {
+  animation: en-marquee 38s linear infinite;
+}
+
+/* Reveal-on-scroll: elements start hidden and are released by an
+   IntersectionObserver that flips [data-reveal] to "in". */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.9s var(--ease-out-soft),
+    transform 0.9s var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hide native number spinners in quantity fields */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}

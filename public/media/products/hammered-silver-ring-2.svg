@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyhammeredsilverring1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#C6C3BF"/>
+      <stop offset="100%" stop-color="#b6b3af"/>
+    </linearGradient>
+    <radialGradient id="vighammeredsilverring1" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainhammeredsilverring1" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framehammeredsilverring1">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framehammeredsilverring1)">
+    <rect width="1200" height="1500" fill="url(#skyhammeredsilverring1)"/>
+    <rect x="0" y="1015.55" width="1200" height="484.45" fill="#95918C"/>
+    <ellipse cx="741.28" cy="1036.55" rx="264.16" ry="33" fill="#C6C3BF" opacity="0.65"/>
+    <rect x="458.25" y="572.59" width="377.37" height="442.96" rx="15.09" fill="#57534F"/>
+    <rect x="458.25" y="572.59" width="128.31" height="442.96" fill="#C6C3BF" opacity="0.35"/>
+    <line x1="0" y1="1015.55" x2="1200" y2="1015.55" stroke="#141211" stroke-width="3.6" opacity="0.75"/>
+    <rect width="1200" height="1500" fill="url(#vighammeredsilverring1)"/>
+    <rect width="1200" height="1500" filter="url(#grainhammeredsilverring1)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

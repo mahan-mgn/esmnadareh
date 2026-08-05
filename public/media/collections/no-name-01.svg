@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100" role="img">
+  <defs>
+    <linearGradient id="skycollectionnoname01" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vigcollectionnoname01" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincollectionnoname01" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecollectionnoname01">
+      <rect x="0" y="0" width="1800" height="1100"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecollectionnoname01)">
+    <rect width="1800" height="1100" fill="url(#skycollectionnoname01)"/>
+    <path d="M -108 108.71 C -26.11 385, -189.89 715, -75.24 1110 L 500.76 1110 C 386.11 715, 549.89 385, 468 108.71 Z" fill="#221E1D" opacity="0.92"/>
+    <path d="M 252 -16.6 C 310.35 385, 193.65 715, 275.34 1110 L 851.34 1110 C 769.65 715, 886.35 385, 828 -16.6 Z" fill="#453E3A" opacity="0.96"/>
+    <path d="M 612 126.56 C 672.89 385, 551.11 715, 636.36 1110 L 1212.36 1110 C 1127.11 715, 1248.89 385, 1188 126.56 Z" fill="#0C0A0A" opacity="0.82"/>
+    <path d="M 972 51.28 C 1083.82 385, 860.18 715, 1016.73 1110 L 1592.73 1110 C 1436.18 715, 1659.82 385, 1548 51.28 Z" fill="#221E1D" opacity="0.82"/>
+    <path d="M 1332 0.97 C 1447.19 385, 1216.81 715, 1378.08 1110 L 1954.08 1110 C 1792.81 715, 2023.19 385, 1908 0.97 Z" fill="#221E1D" opacity="0.8"/>
+    <path d="M 630.16 -20 C 774.16 440, 486.16 770, 684.16 1120" fill="none" stroke="#A8412E" stroke-width="7.21" opacity="0.85"/>
+    <rect width="1800" height="1100" fill="url(#vigcollectionnoname01)"/>
+    <rect width="1800" height="1100" filter="url(#graincollectionnoname01)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="81" y="1061.5" font-family="Helvetica, Arial, sans-serif" font-size="28.6" letter-spacing="8.8" fill="#EDE7DE" opacity="0.45">NO NAME 01</text>
+  </g>
+</svg>

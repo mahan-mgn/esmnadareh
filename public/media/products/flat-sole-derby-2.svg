@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skyflatsolederby1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#C6C3BF"/>
+      <stop offset="100%" stop-color="#b6b3af"/>
+    </linearGradient>
+    <radialGradient id="vigflatsolederby1" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainflatsolederby1" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frameflatsolederby1">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameflatsolederby1)">
+    <rect width="1200" height="1500" fill="url(#skyflatsolederby1)"/>
+    <rect x="0" y="1107.46" width="1200" height="392.54" fill="#95918C"/>
+    <circle cx="731.46" cy="657.33" r="537.69" fill="#57534F"/>
+    <path d="M 731.46 119.64 A 537.69 537.69 0 0 1 731.46 1195.01 Z" fill="#C6C3BF" opacity="0.42"/>
+    <circle cx="731.46" cy="657.33" r="537.69" fill="none" stroke="#141211" stroke-width="4.8" opacity="0.8"/>
+    <line x1="0" y1="1107.46" x2="1200" y2="1107.46" stroke="#141211" stroke-width="3.6" opacity="0.7"/>
+    <rect width="1200" height="1500" fill="url(#vigflatsolederby1)"/>
+    <rect width="1200" height="1500" filter="url(#grainflatsolederby1)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

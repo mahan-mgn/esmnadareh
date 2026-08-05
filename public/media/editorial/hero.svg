@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1400" width="2200" height="1400" role="img">
+  <defs>
+    <linearGradient id="skyeditorialhero" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vigeditorialhero" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graineditorialhero" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="frameeditorialhero">
+      <rect x="0" y="0" width="2200" height="1400"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameeditorialhero)">
+    <rect width="2200" height="1400" fill="url(#skyeditorialhero)"/>
+    <path d="M -132 -34.72 C -70.84 490, -193.16 910, -107.53 1410 L 596.47 1410 C 510.84 910, 633.16 490, 572 -34.72 Z" fill="#221E1D" opacity="0.97"/>
+    <path d="M 308 -2.04 C 388.48 490, 227.52 910, 340.19 1410 L 1044.19 1410 C 931.52 910, 1092.48 490, 1012 -2.04 Z" fill="#453E3A" opacity="0.92"/>
+    <path d="M 748 61.42 C 873.64 490, 622.36 910, 798.25 1410 L 1502.25 1410 C 1326.36 910, 1577.64 490, 1452 61.42 Z" fill="#0C0A0A" opacity="0.85"/>
+    <path d="M 1188 64.48 C 1277.01 490, 1098.99 910, 1223.61 1410 L 1927.61 1410 C 1802.99 910, 1981.01 490, 1892 64.48 Z" fill="#221E1D" opacity="0.83"/>
+    <path d="M 1628 162.44 C 1752.35 490, 1503.65 910, 1677.74 1410 L 2381.74 1410 C 2207.65 910, 2456.35 490, 2332 162.44 Z" fill="#221E1D" opacity="0.84"/>
+    <path d="M 904 -20 C 1080 560, 728 980, 970 1420" fill="none" stroke="#A8412E" stroke-width="10.11" opacity="0.85"/>
+    <rect width="2200" height="1400" fill="url(#vigeditorialhero)"/>
+    <rect width="2200" height="1400" filter="url(#graineditorialhero)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skywidelegdenim0" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vigwidelegdenim0" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainwidelegdenim0" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framewidelegdenim0">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framewidelegdenim0)">
+    <rect width="1200" height="1500" fill="url(#skywidelegdenim0)"/>
+    <rect x="0" y="1200" width="1200" height="300" fill="#221E1D"/>
+    <ellipse cx="631.17" cy="1309.98" rx="422.82" ry="33" fill="#0C0A0A" opacity="0.6"/>
+    <rect x="278.82" y="310.02" width="587.25" height="999.95" rx="293.62" fill="#453E3A"/>
+    <rect x="278.82" y="310.02" width="246.64" height="999.95" rx="176.17" fill="#0C0A0A" opacity="0.5"/>
+    <line x1="144" y1="265.02" x2="1056" y2="265.02" stroke="#A8412E" stroke-width="4.8" opacity="0.8"/>
+    <rect x="584.19" y="470.02" width="29.36" height="619.97" fill="#A8412E" opacity="0.55"/>
+    <rect width="1200" height="1500" fill="url(#vigwidelegdenim0)"/>
+    <rect width="1200" height="1500" filter="url(#grainwidelegdenim0)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="54" y="1447.5" font-family="Helvetica, Arial, sans-serif" font-size="31.2" letter-spacing="9.6" fill="#EDE7DE" opacity="0.45">WIDE LEG DENIM</text>
+  </g>
+</svg>

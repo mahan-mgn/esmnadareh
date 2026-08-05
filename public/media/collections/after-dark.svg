@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100" role="img">
+  <defs>
+    <linearGradient id="skycollectionafterdark" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0C0A0A"/>
+      <stop offset="100%" stop-color="#131010"/>
+    </linearGradient>
+    <radialGradient id="vigcollectionafterdark" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="graincollectionafterdark" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framecollectionafterdark">
+      <rect x="0" y="0" width="1800" height="1100"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framecollectionafterdark)">
+    <rect width="1800" height="1100" fill="url(#skycollectionafterdark)"/>
+    <polygon points="-360,-330 2160,-531.11 2160,-179.11 -360,22" fill="#0C0A0A" opacity="0.88"/>
+    <polygon points="-360,22 2160,-179.11 2160,172.89 -360,374" fill="#221E1D" opacity="0.86"/>
+    <polygon points="-360,374 2160,172.89 2160,524.89 -360,726" fill="#453E3A" opacity="0.99"/>
+    <polygon points="-360,726 2160,524.89 2160,876.89 -360,1078" fill="#221E1D" opacity="0.97"/>
+    <polygon points="-360,1078 2160,876.89 2160,1228.89 -360,1430" fill="#0C0A0A" opacity="0.94"/>
+    <polygon points="-360,577.56 2160,376.44 2160,432.76 -360,633.88" fill="#A8412E" opacity="0.75"/>
+    <rect width="1800" height="1100" fill="url(#vigcollectionafterdark)"/>
+    <rect width="1800" height="1100" filter="url(#graincollectionafterdark)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    <text x="81" y="1061.5" font-family="Helvetica, Arial, sans-serif" font-size="28.6" letter-spacing="8.8" fill="#EDE7DE" opacity="0.45">AFTER DARK</text>
+  </g>
+</svg>

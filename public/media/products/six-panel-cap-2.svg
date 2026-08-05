@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500" role="img">
+  <defs>
+    <linearGradient id="skysixpanelcap1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#383B2E"/>
+      <stop offset="100%" stop-color="#434535"/>
+    </linearGradient>
+    <radialGradient id="vigsixpanelcap1" cx="50%" cy="44%" r="82%">
+      <stop offset="68%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="grainsixpanelcap1" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="n"/>
+      <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+      <feComponentTransfer in="g" result="grain">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+    </filter>
+    <clipPath id="framesixpanelcap1">
+      <rect x="0" y="0" width="1200" height="1500"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#framesixpanelcap1)">
+    <rect width="1200" height="1500" fill="url(#skysixpanelcap1)"/>
+    <rect x="0" y="1035.58" width="1200" height="464.42" fill="#5A5B45"/>
+    <circle cx="489.46" cy="811.6" r="500.92" fill="#868864"/>
+    <path d="M 489.46 310.68 A 500.92 500.92 0 0 1 489.46 1312.52 Z" fill="#383B2E" opacity="0.42"/>
+    <circle cx="489.46" cy="811.6" r="500.92" fill="none" stroke="#F2EDE6" stroke-width="4.8" opacity="0.8"/>
+    <line x1="0" y1="1035.58" x2="1200" y2="1035.58" stroke="#F2EDE6" stroke-width="3.6" opacity="0.7"/>
+    <rect width="1200" height="1500" fill="url(#vigsixpanelcap1)"/>
+    <rect width="1200" height="1500" filter="url(#grainsixpanelcap1)" opacity="0.13" style="mix-blend-mode:overlay"/>
+    
+  </g>
+</svg>
