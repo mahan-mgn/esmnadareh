@@ -1,0 +1,38 @@
+# Render blueprint — free-tier demo deployment.
+#
+# The database lives on Neon rather than Render, so only a web service is
+# declared here. See DEPLOY.md for the connection strings and why migrations
+# need the unpooled one.
+
+services:
+  - type: web
+    name: esmnadareh
+    runtime: node
+    plan: free
+    region: frankfurt
+
+    # `migrate deploy` is a no-op when the schema is already current; it stays
+    # in the build so a later schema change ships with its own migration.
+    buildCommand: npm ci && npx prisma migrate deploy && npm run build
+    startCommand: npm start
+
+    healthCheckPath: /
+
+    envVars:
+      # Next 16 needs Node 20.9+; pin it rather than inherit Render's default.
+      - key: NODE_VERSION
+        value: "22"
+
+      # Baked into the client bundle at build time, so it cannot be read from
+      # RENDER_EXTERNAL_URL at runtime. Correct this if the service name is
+      # taken and Render assigns a different hostname, then redeploy.
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://esmnadareh.onrender.com
+
+      # Set in the Render dashboard — never commit these.
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: AUTH_SECRET
+        sync: false
