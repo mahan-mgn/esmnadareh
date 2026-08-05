@@ -81,9 +81,31 @@ Vercel برای حساب‌های ایرانی تأیید پیامکی می‌خ
 می‌دهد و `render.yaml` در ریشه‌ی مخزن تنظیماتش را از پیش دارد.
 
 1. در [render.com](https://render.com) با حساب گیت‌هاب وارد شو.
-2. **New → Blueprint** و مخزن `mahan-mgn/esmnadareh` را انتخاب کن. Render
-   خودش `render.yaml` را می‌خواند؛ Build و Start Command را دستی نزن.
-3. سه متغیری که `sync: false` دارند را از تو می‌پرسد:
+2. **New → Web Service** و مخزن `mahan-mgn/esmnadareh` را انتخاب کن.
+
+   > مسیر **Blueprint** (خواندن خودکار `render.yaml`) کارت اعتباری می‌خواهد و
+   > با پیام *Add card* متوقف می‌شود. ساختن دستی Web Service این محدودیت را
+   > ندارد؛ همان مقادیر را دستی وارد کن:
+   >
+   > | فیلد | مقدار |
+   > | --- | --- |
+   > | Language | `Node` |
+   > | Branch | `main` |
+   > | Region | `Frankfurt (EU Central)` |
+   > | Build Command | `npm ci && npx prisma migrate deploy && npm run build` |
+   > | Start Command | `npm start` |
+   > | Instance Type | **Free** |
+   >
+   > `render.yaml` را نگه می‌داریم تا اگر بعداً حساب ارتقا یافت، همین تنظیمات
+   > بدون بازنویسی قابل استفاده باشند.
+
+3. در بخش **Environment Variables** این پنج مورد را اضافه کن — دو تای اول در
+   `render.yaml` بودند و در مسیر دستی باید خودت واردشان کنی:
+
+   | نام | مقدار |
+   | --- | --- |
+   | `NODE_VERSION` | `22` |
+   | `NEXT_PUBLIC_SITE_URL` | `https://esmnadareh.onrender.com` |
 
    | نام | مقدار |
    | --- | --- |
@@ -94,7 +116,7 @@ Vercel برای حساب‌های ایرانی تأیید پیامکی می‌خ
    برای ساختن `AUTH_SECRET`:
    `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`
 
-4. **Apply** را بزن. اولین بیلد حدود ۵ تا ۱۰ دقیقه طول می‌کشد.
+4. **Deploy Web Service** را بزن. اولین بیلد حدود ۵ تا ۱۰ دقیقه طول می‌کشد.
 5. اگر نام `esmnadareh` گرفته شده بود و Render آدرس دیگری داد، مقدار
    `NEXT_PUBLIC_SITE_URL` را در **Environment** اصلاح کن و **Manual Deploy →
    Deploy latest commit** بزن. این متغیر موقع بیلد داخل باندل جاسازی می‌شود، پس
