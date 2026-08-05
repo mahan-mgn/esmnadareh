@@ -16,7 +16,16 @@
    | با pooling | `...@ep-xxx-pooler.eu-central-1.aws.neon.tech/...` | `DATABASE_URL` |
    | بدون pooling | `...@ep-xxx.eu-central-1.aws.neon.tech/...` | `DIRECT_URL` |
 
-   تفاوتشان فقط `-pooler` در نام میزبان است. `sslmode=require` را در هر دو نگه دار.
+   تفاوتشان فقط `-pooler` در نام میزبان است. `sslmode=require` را در هر دو نگه دار
+   و به هر دو **`&connect_timeout=30`** اضافه کن.
+
+   آن `connect_timeout` اختیاری نیست: مهلت پیش‌فرض Prisma پنج ثانیه است و هم
+   بیدار شدن compute خوابیده‌ی Neon و هم لینک پرلتانسی (VPN) از آن عبور می‌کنند.
+   نتیجه‌اش خطای گمراه‌کننده‌ی `P1001: Can't reach database server` است، در حالی
+   که سرور کاملاً در دسترس است.
+
+   پارامتر `channel_binding=require` را که Neon در رشته می‌گذارد می‌توانی نگه
+   داری؛ در عمل بی‌اثر بود.
 
    دو تا لازم است چون pooler در حالت transaction کار می‌کند و قفل و session
    state موردنیاز `prisma migrate` را نگه نمی‌دارد. اپلیکیشن از نسخه‌ی pooled
@@ -37,6 +46,32 @@ npx prisma db seed
 ```
 
 بعد از تمام شدن، پنجره‌ی ترمینال را ببند تا متغیرها به حالت لوکال برگردند.
+
+### اگر `migrate deploy` وسط کار قطع شد
+
+روی لینک پرلتانسی، خطای `P1017: Server has closed the connection` شایع است.
+موتور schema هیچ تلاش مجددی نمی‌کند و پایگاه داده نیمه‌مهاجرت باقی می‌ماند —
+جدول‌ها ساخته شده‌اند ولی در `_prisma_migrations` ثبت نشده‌اند، و از آن به بعد
+هر `migrate deploy` شکست می‌خورد.
+
+`scripts/neon-apply.mjs` همان SQL را با درایور `pg` و پنج بار تلاش مجدد اجرا
+می‌کند و دفترچه‌ی `_prisma_migrations` را دقیقاً مثل خود Prisma می‌نویسد
+(همان checksum)، پس اجراهای بعدی `migrate deploy` روی ورسل بی‌اثر رد می‌شوند:
+
+```powershell
+$env:DIRECT_URL = "<رشته بدون pooling>"
+node scripts/neon-apply.mjs --status   # فقط گزارش وضعیت
+node scripts/neon-apply.mjs --reset    # پاک‌سازی و اجرای تمیز همه مهاجرت‌ها
+```
+
+`--reset` اسکیمای `public` را کامل drop می‌کند. فقط روی پایگاه داده‌ی تازه یا
+دموی دورریختنی استفاده‌اش کن.
+
+برای اطمینان از اینکه Prisma نتیجه را می‌پذیرد:
+
+```powershell
+npx prisma migrate status   # باید بگوید: Database schema is up to date!
+```
 
 ## ۳. دیپلوی روی Vercel
 
