@@ -4,7 +4,7 @@
 
 .DESCRIPTION
   A demo link without an account anywhere: no card, no SMS, and reachable from
-  Iran without a VPN — which is what pushed this over Vercel and Render.
+  Iran without a VPN ? which is what pushed this over Vercel and Render.
 
   The site must have been built with NEXT_PUBLIC_SITE_URL empty. Absolute URLs
   then come from the x-forwarded-* headers cloudflared sends, so a new tunnel
@@ -27,18 +27,18 @@ $port = 3000
 if (-not (Test-Path $bin)) { New-Item -ItemType Directory -Path $bin | Out-Null }
 
 if (-not (Test-Path $exe)) {
-  Write-Host "Downloading cloudflared…" -ForegroundColor Cyan
+  Write-Host "Downloading cloudflared?" -ForegroundColor Cyan
   Invoke-WebRequest `
     -Uri "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe" `
     -OutFile $exe -TimeoutSec 600 -UseBasicParsing
 }
 
 # The local cluster holds the catalog; `npm start` only fails later without it.
-Write-Host "Checking Postgres…" -ForegroundColor Cyan
+Write-Host "Checking Postgres?" -ForegroundColor Cyan
 & npm run --silent db:start | Out-Null
 
 if (-not (Test-Path (Join-Path $root ".next"))) {
-  Write-Host "No build found — running next build…" -ForegroundColor Cyan
+  Write-Host "No build found ? running next build?" -ForegroundColor Cyan
   $env:NEXT_PUBLIC_SITE_URL = ""
   & npm run build
 }
@@ -61,13 +61,13 @@ if ($listening.TcpTestSucceeded) {
       exit 1
     }
   } catch {
-    Write-Host "Port $port is occupied but not answering — free it and retry." -ForegroundColor Red
+    Write-Host "Port $port is occupied but not answering ? free it and retry." -ForegroundColor Red
     exit 1
   }
 }
 
 if (-not $listening.TcpTestSucceeded) {
-  Write-Host "Starting the app on port $port…" -ForegroundColor Cyan
+  Write-Host "Starting the app on port $port?" -ForegroundColor Cyan
   $log = Join-Path $bin "next.log"
   Start-Process -FilePath "cmd.exe" `
     -ArgumentList "/c npm start > `"$log`" 2>&1" `
@@ -88,10 +88,10 @@ if (-not $listening.TcpTestSucceeded) {
     exit 1
   }
 } else {
-  Write-Host "Port $port already serving — reusing it." -ForegroundColor DarkGray
+  Write-Host "Port $port already serving ? reusing it." -ForegroundColor DarkGray
 }
 
-Write-Host "Opening the tunnel…" -ForegroundColor Cyan
+Write-Host "Opening the tunnel?" -ForegroundColor Cyan
 $tunnelLog = Join-Path $bin "tunnel.log"
 if (Test-Path $tunnelLog) { Remove-Item $tunnelLog -Force }
 
@@ -124,8 +124,8 @@ if (-not $url) {
 Write-Host ""
 Write-Host "  $url" -ForegroundColor Green
 Write-Host ""
-Write-Host "  admin    → admin@esmnadareh.com / Admin!2345" -ForegroundColor DarkGray
-Write-Host "  customer → customer@esmnadareh.com / Customer!2345" -ForegroundColor DarkGray
+Write-Host "  admin    ? admin@esmnadareh.com / Admin!2345" -ForegroundColor DarkGray
+Write-Host "  customer ? customer@esmnadareh.com / Customer!2345" -ForegroundColor DarkGray
 Write-Host ""
 Write-Host "Leave this window open. Ctrl+C ends the demo." -ForegroundColor Yellow
 
